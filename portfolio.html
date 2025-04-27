@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="bg-primary text-white text-center py-4">
+        <h1>Portifolio-ChuvaDeLikes</h1>
+        <div class="d-flex justify-content-center gap-3">
+            <h6>Beatriz</h6>
+            <h6>Isadora</h6>
+            <h6>Maria</h6>
+        </div>
+    </header>
+
+    <section id="about" class="container my-5">
+        <div class="carousel position-relative">
+            <div class="carousel-images d-flex justify-content-center">
+                <img src="chuva.jpg" alt="Chuva" class="img-fluid d-none">
+                <img src="chuva2.jpg" alt="Chuva 2" class="img-fluid d-none">
+                <img src="chuva3.jpg" alt="Chuva 3" class="img-fluid d-none">
+            </div>
+            <button class="carousel-prev btn btn-dark position-absolute top-50 start-0 translate-middle-y">
+                &#10094;
+            </button>
+            <button class="carousel-next btn btn-dark position-absolute top-50 end-0 translate-middle-y">
+                &#10095;
+            </button>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2025 - #chuvadelikes.</p>
+    </footer>
+
+    <script>
+        const images = document.querySelectorAll('.carousel-images img');
+        const prevButton = document.querySelector('.carousel-prev');
+        const nextButton = document.querySelector('.carousel-next');
+        let currentIndex = 0;
+
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.toggle('d-none', i !== index);
+            });
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        });
+
+        showImage(currentIndex);
+    </script>
+</body>
+</html>
